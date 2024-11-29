@@ -1,0 +1,33 @@
+.blogs-table{
+  background-color: rgb(225, 225, 225);
+  border: 1px solid grey;
+}
+
+.minorReport{
+  color: grey;
+  font-size: 90%;
+}
+
+/* Affects all table cells */
+td{
+  background-color: white;
+  border: 1px solid black;
+}
+
+/* Applying the "hand" when you hover over a button */
+button{
+  cursor: pointer
+}
+
+.reviewButton{
+  padding: 5px;
+  border: 1px solid #000000;
+  background-color: yellow;
+
+}
+
+.readButton{
+  padding: 5px;
+  border: 1px solid #000000;
+  background: rgb(235, 235, 235); 
+}

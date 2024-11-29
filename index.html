@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This title is used for tabs and bookmarks -->
+	<title>Eerie Watch Homepage</title>
+
+	<!-- Use UTF character set, a good idea with any webpage -->
+  <meta charset="UTF-8" />
+	<!-- Set viewport so page remains consistently scaled w narrow devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- Include a sitewide CSS file for consistent styling across the site -->
+	<link rel="stylesheet" type="text/css" href="css/site.css">
+	<!-- Experiment-specifc CSS file for any special styling of this particular page -->
+	<link rel="stylesheet" type="text/css" href="css/homepage.css">
+	<!-- Link to javascript file - DEFER waits until all elements are rendered -->
+	<script src="js/site.js"></script>
+</head>
+
+<script>
+	window.onload = function() {
+		// Check if the user is already logged in
+		if(sessionStorage.getItem("loggedIn") === "true") {
+			document.getElementById('loginForm').style.display = 'none'; // Hide login form
+			document.getElementById('content').style.display = 'block'; // Show main content
+		}
+
+		//load anything in local storage
+		LoadLocalStorage();
+		// Add event listener to play click sound on mouse click
+		document.body.addEventListener('mousedown', playClickSound);
+
+		ChangeMinorReports();
+	};
+
+	function login(event) { 
+	  event.preventDefault(); // Prevent form from submitting and refreshing the page
+	  var username = document.getElementById('username').value;
+	  var password = document.getElementById('password').value;
+	  if(username && password) { // Checks if username and password are not empty
+		sessionStorage.setItem("loggedIn", "true"); // Remember that user is logged in
+		document.getElementById('loginForm').style.display = 'none'; // Hide login form
+		document.getElementById('content').style.display = 'block'; // Show main content
+	  } else {
+		alert("Please enter both username and password.");
+	  }
+	}
+	function playClickSound() {
+            var audio = new Audio('click.mp3');
+            audio.play();
+        }
+	</script>
+
+<body>
+	<div id="loginForm" style="position: absolute; width: 100%; height: 100%; background-color: white; display: flex; justify-content: center; align-items: center;">
+		<form onsubmit="login(event)">
+		  <div style="padding: 20px; border: 1px solid #ccc; background-color: #f9f9f9;">
+			<label for="username">Username:</label><br>
+			<input type="text" id="username" name="username" required><br>
+			<label for="password">Password:</label><br>
+			<input type="password" id="password" name="password" required><br><br>
+			<input type="submit" value="Login">
+		  </div>
+		</form>
+	  </div>
+	  
+	  <!-- After the login page -->
+	  <main id="content" style="display:none;">
+		<section>
+			<table width="100%" height="100%" border="5">
+ 				 <tbody>
+    				<tr>
+						<td width="271" rowspan="2" style="vertical-align:top;">
+							<img src="img/logo.png" alt="logo" width="100%" height="auto">
+							<p>Recent Reports:</p> <hr>
+							<p class="minorReport">minor 1</p> <hr>
+							<p class="minorReport">minor 2</p> <hr>
+							<p class="minorReport">minor 3</p> <hr>
+							<p class="minorReport">minor 4</p> <hr>
+							<p class="minorReport">minor 5</p> <hr>
+							<p class="minorReport">minor 6</p> <hr>
+							<p id="current-time"></p>
+							<script>
+								function displayCurrentTime() {
+								var now = new Date();
+								var hours = now.getHours();
+								var minutes = now.getMinutes();
+								var seconds = now.getSeconds();
+								var ampm = hours >= 12 ? 'PM' : 'AM';
+								hours = hours % 12;
+								hours = hours ? hours : 12; // Handle midnight (0 hours)
+								minutes = minutes < 10 ? '0' + minutes : minutes;
+								seconds = seconds < 10 ? '0' + seconds : seconds;
+								var timeString = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+								document.getElementById('current-time').textContent = timeString;
+								}
+								displayCurrentTime();
+								// Update time every second
+								setInterval(displayCurrentTime, 1000);
+							</script>
+						</td>
+      					<td width="1917" height="219"><table width="100%" height="100%" border="1">
+       					<tbody>
+							<tr>
+           					<td style="padding: 10px; height:209px;"><section><p>&gt;Welcome, new employee, to the EerieWatch web portal.</p>
+              				<p> &gt;Here, you will find a list of reports of potential supernatural activity that have been gathered for our organization to review. While such an important task may seem intimidating at first, we have faith that you will swiftly gain the experience and understanding necessary to thrive in your new position! </p>
+              				<p>&gt;Below, you will find a list of reports to investigate. At your current clearance level, further steps in the investigative process remain confidential, but you still have an important job to do! Please read the reports carefully. Some may be descriptions of legitimate supernatural occurrences, but others are likely to be fictional stories, or manifestations of the author’s superstitions. Your job is to flag any reports of legitimate occurrences for future investigation. </p>
+              				<p>&gt;We trust that you will do everything in your power to excel. </p></section>
+              				</td>
+          				</tr>
+          				<tr>
+            				<td style="height: 36;"> <p>Type Message...</p></td>
+          				</tr>
+        				</tbody>
+      					</table> </td>
+   					 </tr>
+				
+				
+				<!-- Confirmation Modal -->
+				<div id="confirmationModal" style="display:none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center;">
+    				<div style="background: white; padding: 20px; border-radius: 5px; text-align: center;">
+        				<p>Are you sure you want to flag this post?</p>
+        				<p>If you do not flag this post we will assume there's nothing to be investigated further here.</p>
+        				<button id="confirmFlag">Flag Post</button>
+        				<button id="cancelFlag">Cancel</button>
+    				</div>
+				</div>
+
+				<!-- Report Box (initially hidden) -->
+				<div id="reportBox" style="display:none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center;">
+    				<div style="background: white; padding: 20px; border-radius: 5px; text-align: center;">
+        				<p id="reportMessage">This is where the report message will appear.</p>
+        				<button onclick="closeReportBox()">Close Report</button>
+    				</div>
+				</div>
+
+				
+				<!-- BLOGS/CASES/REPORTS TABLE -->
+    			<tr>
+      				<td><table width="100%" class="blogs-table">
+					<tr>
+						<th style="text-align: center; padding: 10px;" colspan="2">Reports</th>
+					</tr>
+					<tr>
+						<td style="padding: 10px" id="row1"><a href="Blog 1/index.html">The Mystery of the S.S Eternity</a><br>Paranormal Movement on Cruise Ship</td>
+						<td width="20%" id="row1a">
+							<button onclick="confirmFlag(this.id)" id="review1" class="reviewButton">Flag for review</button>
+							<button onclick="readButton(this.id)" id="read1" class="readButton">Mark as Read</button>
+						</td>
+					</tr>
+					<tr>
+						<td style="padding: 10px" id="row2"><a href="Blog 2/index.html">I saw strange creatures in my Studio</a><br>There were strange creatures living with me in my studio</td>
+						<td width="20%" id="row2a">
+							<button onclick="confirmFlag(this.id)" id="review2" class="reviewButton">Flag for review</button>
+							<button onclick="readButton(this.id)" id="read2" class="readButton">Mark as Read</button>
+						</td>
+					</tr>
+					<tr>
+						<td style="padding: 10px" id="row7"><a href="Blog 7/index.html">Game Reviews Daily</a><br>Today’s review will be about a niche mobile game I was recommended...</td>
+						<td width="20%" id="row7a">
+							<button onclick="confirmFlag(this.id)" id="review7" class="reviewButton">Flag for review</button>
+							<button onclick="readButton(this.id)" id="read7" class="readButton">Mark as Read</button>
+						</td>
+					</tr>
+					<tr>
+						<td style="padding: 10px" id="row3"><a href="Blog 3/index.html">The Empty Houses</a><br>Houses in Northern Maryland appear empty yet people are entering and exiting</td>
+						<td width="20%" id="row3a">
+							<button onclick="confirmFlag(this.id)" id="review3" class="reviewButton">Flag for review</button>
+							<button onclick="readButton(this.id)" id="read3" class="readButton">Mark as Read</button>
+						</td>
+					</tr>
+					<tr>
+						<td style="padding: 10px" id="row4"><a href="Blog 4/index.html">Deep in the Woods: A Mysterious Encounter</a><br>A ominous encounter in woods of Norway</td>
+						<td width="20%" id="row4a">
+							<button onclick="confirmFlag(this.id)" id="review4" class="reviewButton">Flag for review</button>
+							<button onclick="readButton(this.id)" id="read4" class="readButton">Mark as Read</button>
+						</td>
+					</tr>
+					<tr>
+						<td style="padding: 10px" id="row5"><a href="Blog 5/index.html">Skinwalker heard by Waifu</a><br>My waifu heard strange sound in our house</td>
+						<td width="20%" id="row5a">
+							<button onclick="confirmFlag(this.id)" id="review5" class="reviewButton">Flag for review</button>
+							<button onclick="readButton(this.id)" id="read5" class="readButton">Mark as Read</button>
+						</td>
+					</tr>
+					<tr>
+						<td style="padding: 10px" id="row8"><a href="Blog 8/index.html">Gold & Jules</a><br>Advice on Staging an Intervention?</td>
+						<td width="20%" id="row8a">
+							<button onclick="confirmFlag(this.id)" id="review8" class="reviewButton">Flag for review</button>
+							<button onclick="readButton(this.id)" id="read8" class="readButton">Mark as Read</button>
+						</td>
+					</tr>
+					<tr>
+						<td style="padding: 10px" id="row6"><a href="Blog 6/index.html">Mayonaise National Park</a><br>Campers encountered mysterious creatures</td>
+						<td width="20%" id="row6a">
+							<button onclick="confirmFlag(this.id)" id="review6" class="reviewButton">Flag for review</button>
+							<button onclick="readButton(this.id)" id="read6" class="readButton">Mark as Read</button>
+						</td>
+					</tr>
+					<tr>
+						<td style="padding: 10px" id="row9"><a href="Blog 9/index.html">Ask Tech Support</a><br>Downloaded a game, but I think it's malware. Help?</td>
+						<td width="20%" id="row9a">
+							<button onclick="confirmFlag(this.id)" id="review9" class="reviewButton">Flag for review</button>
+							<button onclick="readButton(this.id)" id="read9" class="readButton">Mark as Read</button>
+						</td>
+					</tr>
+				</table></td>
+				<button onclick="resetFlagsAndReads()" id="resetButton" class="resetButton">Reset Flags and Reads</button>
+    		</tr>
+ 		</tbody>
+	</table>
+</body>
+
+		</section>
+		<nav id="links">
+			
+		</nav>
+	</main>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SkinWalker In Our House</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="./css/output.css">
+	<script src="./js/audio.js"></script>
+</head>
+<body>
+	<main id="content">
+		<div class=" relative">
+			<p id="current-time" style="background-color: black; color:white"></p>
+    	<script>
+        function displayCurrentTime() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // Handle midnight (0 hours)
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            var timeString = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+            document.getElementById('current-time').textContent = timeString;
+        }
+        displayCurrentTime();
+        setInterval(displayCurrentTime, 1000);
+    </script>
+			<button 
+				class="mx-4 p-2 cursor-pointer bg-gray-500 text-white rounded-full shrink max-w-28 max-h-20 shadow absolute top-6 left-6 hover:bg-gray-800 hover:scale-110 text-lg shadow " 
+				type="button" onclick="window.location.href='../index.html';"
+				>
+				<img src="./assets/homeIcon.png" alt="homeIcon" class="w-12">
+			</button>
+			<button 
+				class="mx-4 cursor-pointer rounded-full bg-gray-400 shrink max-w-28 max-h-20 shadow absolute top-6 right-6 hover:bg-gray-800 hover:scale-110 text-lg shadow " 
+				type="button" onclick="window.location.href='../Blog 6/index.html';"
+				>
+				<img src="./assets/arrowRight.png" alt="arrowRight" class="w-14">
+			</button>
+			<div class="">
+				<img class='w-full h-[55vh]'id="imageDisplay" src="./assets/skinwalker.jpg" alt="skinwalker image" ">
+		
+				<div class="absolute rounded-full p-8 flex"> 
+					<button
+						type="button"
+						id="pauseBtn"
+						class="hover:scale-110 cursor-pointer "
+					>
+					<img src="./assets/mute.png" alt="mute" class="w-14 p-2 text-white">
+					</button>
+					<button
+						type="button"
+						id="switchBtn"
+						class="hover:scale-110 cursor-pointer rounded-full"
+					>
+					<img src="./assets/next.png" alt="nextImg" class="w-14 p-2 text-white">
+					</button>
+				</div>
+			</div>
+			<audio id="bgMusic" autoplay loop>
+				<source src="./assets/tearsOf.ogg" type="audio/mpeg">
+				Your browser does not support the audio element.
+			</audio>
+		</div>
+		
+		<section class="bg-gray-800 text-white p-5">
+			
+			<div class="flex justify-center">
+				<h1 class="text-5xl p-4 pt-6">My </h1>
+				<img id="waifuIcon" src="./assets/wa1.jpg" alt="image of waifu" class="w-30 h-28 shadow-lg rounded-full transition-transform  cursor-pointer hover:scale-125">
+						
+				<span class="relative inline-block text-3xl px-5 pt-5">
+					Waifu 
+				</> 
+				<h1 class="text-3xl "> Heard a SkinWalker in Our House Last Night </h1>
+				
+			</div>
+			
+			<div>
+				<h2 class="text-2xl px-5">Intro</h2>
+			</div>
+			<div class="my-2 bg-white h-0.5 w-full"></div>
+			
+			<div class="px-14 py-4 indent-8 leading-relaxed">
+				<p>	Let me start off by saying that my waifu doesn’t believe in paranormal entities or 
+					anything of that nature. We have three cats, and one of them likes to be a rebel, jumping
+					 onto counters and meowing at the top of his lungs just looking for attention. He does this throughout the night 
+					 and it’s a regular occurrence.
+				</p>
+			</div>
+
+			<div class="pt-5">
+				<h2 class="text-2xl px-5">What happened</h2>
+			</div>
+			<div class="my-2 bg-white h-0.5 w-full"></div>
+			
+			<div class="px-14 py-4 indent-8 leading-relaxed">
+				<p>Last night, after a few beers and video games, i decided it was time to head to bed with my wife. 
+					When I woke up this morning, my <strong>Waifu</strong> was basically attached to me with wide eyes and a nervous look on her face.
+					 I asked her what was wrong and she proceeded to tell me what happened last night.
+
+					She said that around 2:50 in the morning, she was woken up to a noise that sounded 
+					like one of our cats downstairs meowing unusually loud. After giving herself a few seconds 
+					to perk up and fully pay attention, she said that the “meows” sounded more like a person trying to 
+					mimic a cat and it kept saying “hello”.
+					
+					After “meowing” for two to three minutes, a loud bang came at our door and then a 
+					notification went off for a motion sensor at our front door. When she told me this,
+					 I checked my phone and sure enough, there was a notification for motion detected at 2:52 AM. 
+					 I asked her why she didn’t wake me up so I could grab my gun, she said she was frozen with fear and didn’t
+					 want “it” to hear her make a noise.
+				</p>
+			</div>
+
+			<div class="pt-5">
+				<h2 class="text-2xl px-4">For now</h2>
+			</div>
+			<div class="my-2 bg-white h-0.5 w-full "></div>
+			<div class="px-14 py-5 indent-8 leading-relaxed">
+				<p>We’re out running errands while I’m typing this, but something made me uncomfortable about her story. 
+					Last night I set the home security alarm around 9 PM, and we didn’t turn it off till we walked the dog this morning. 
+					To make things worse, we had slept with with all of the animals in the room and the door was closed. 
+					So whatever was in our house or outside the front door was not one of our animals. Obviously the first thing that came 
+					to my mind was a skinwalker, but maybe I’m just being paranoid.
+
+					I checked all the rooms in the house after I got up, I’m not sure what I could’ve done anyways. 
+					It’s very odd that my <strong>Waifu</strong> was scared so badly by something she doesn’t necessarily believe in. We bought this 
+					house brand new, so no one has lived here before. When I’m home alone, I do feel like I’m being watched or someone’s 
+					always walking directly behind me. My wife also said that the house has given her chills since we moved in. Something 
+					is just “off” about it.</p>
+			</div>
+
+			<div class="pt-5">
+				<h2 class="text-2xl px-4">Aftermath</h2>
+			</div>
+			<div class="my-2 bg-white h-0.5 w-full"></div>
+
+			<div class="px-14 py-5 indent-8 leading-relaxed">
+				<p>We just got home and I went to hang up one of my shirts in the master bedroom closet when I noticed that the 
+					board that covers the attic access has been shifted a little. When I asked my wife about it, she said she’s never 
+					been up there and the builders would’ve placed it back in it’s original place before we made the purchase. I’m genuinely
+					 getting anxious just thinking about what could be going on. Has anyone had an experience like this? Or similar at 
+					 least? We’re going to my mother in law’s to get some sage. My wife said burning it should keep whatever’s around our house away.
+					 <br>
+				</p>
+			</div>
+			<div class="px-8">
+				<p class="text-right">
+					*By Reddit user <strong>JayBakd</strong>
+				</p>
+			</div>
+		</section>
+
+
+		<section class="bg-gray-800 text-white p-5">
+
+			<div>
+				<h2 class="text-3xl font-bold text-center pt-5 px-5">Comment Section</h2>
+			</div>
+			
+			<div class="my-2 bg-white h-0.5 w-full"></div>
+			
+			<div class="px-14 space-y-4">
+				<div class="bg-gray-600 p-4 mt-6 rounded-lg flex relative items-center">
+					<img id="waifuIcon2" src="./assets/wa3.png" alt="image of waifu" class="waifuIcon cursor-pointer" loading="lazy">
+					<p class="px-8 ">
+						If you go to check the attic, make sure you bring at least 3 other people with you in case it really is a skinwalker -- WeGetNoSleep
+					</p>
+				</div>
+				<div class="bg-gray-600 p-4 mt-6 rounded-lg flex relative items-center ">
+					<img id="waifuIcon3" src="./assets/wa8.png" alt="image of waifu" class="waifuIcon cursor-pointer" loading="lazy">
+					<p class="px-8">
+						One to shakily hold the camera and poorly frame everything while the other is offered as a sacrifice in case its "hungry" -- thexvillain
+					</p>
+				</div>
+				<div class="bg-gray-600 p-4 mt-6 rounded-lg flex relative items-center ">
+					<img id="waifuIcon4" src="./assets/wa5.png" alt="image of waifu" class="waifuIcon cursor-pointer" loading="lazy">
+					<p class="px-8 ">A wendigo is a creature from the folklore of the East coasts of Canada. The Wendigo is is often said to be a malevolent spirit, sometimes depicted as 
+						a creature with human-like characteristics, which possesses human beings. The wendigo is known to invoke feelings of insatiable greed/hunger, 
+						the desire to cannibalize other humans, as well as the propensity to commit murder in those that fall under its influence. -- Sebixxv
+					</p>
+				</div>
+				<div class="bg-gray-600 p-4 mt-6 rounded-lg flex relative items-center">
+					<img id="waifuIcon5" src="./assets/wa6.png" alt="image of waifu" class="waifuIcon cursor-pointer" loading="lazy">
+					<p class="px-8 ">Don't think it is a wendigo, no extreme cold was report or vast hunger that is associated with greater wendigos. Lesser wendigos would have 
+						clawed the door in to at very least get at the cats. It could be a skin walker or a shape shifter though. Maybe even a lycanthrope. -- ArchonNoche
+					</p>
+				</div>
+				<div class="bg-gray-600 p-4 mt-6 rounded-lg flex relative items-center">
+					<img id="kikyoSama" src="./assets/kikyoSama2.png" alt="image of kikyoSama" class="w-24 h-24 shadow-lg rounded-full transition-transform  shadow-2xl hover:scale-125 cursor-pointer" loading="lazy">
+					<p class="px-8 ">A creature or spirit that eats a person and then takes on their identity. Usually it doesn’t mimic perfectly and it tries to lure 
+						people who were familiar with former identity to it so it can eat/mimic them as well. -- KikyoSama
+					</p>
+				</div>
+			</div>
+
+		</section>
+	</main>
+</body>
+</html>

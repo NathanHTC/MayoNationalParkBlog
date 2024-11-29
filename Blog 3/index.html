@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This title is used for tabs and bookmarks -->
+	<title>Blog 3</title>
+	<style>
+		body{
+			color: white;
+		}
+	</style>
+	<!-- Use UTF character set, a good idea with any webpage -->
+	<meta charset="UTF-8" />
+	<!-- Set viewport so page remains consistently scaled w narrow devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
+	<!--    <link rel="stylesheet" type="text/css" href="../css/site.css">    -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/project.js"></script>
+</head>
+	<script>
+	window.onload = function() {
+        loadLocalStorage();
+        document.body.addEventListener('mousedown', playClickSound);
+    };
+
+    function playClickSound() {
+        var audio = new Audio('click.mp3');
+        audio.play();
+    }
+</script>
+
+<body>
+	<div> 
+		<p id="current-time"></p>
+    	<script>
+			function displayCurrentTime() {
+				var now = new Date();
+				var hours = now.getHours();
+				var minutes = now.getMinutes();
+				var seconds = now.getSeconds();
+				var ampm = hours >= 12 ? 'PM' : 'AM';
+				hours = hours % 12;
+				hours = hours ? hours : 12; // Handle midnight (0 hours)
+				minutes = minutes < 10 ? '0' + minutes : minutes;
+				seconds = seconds < 10 ? '0' + seconds : seconds;
+				var timeString = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+				document.getElementById('current-time').textContent = timeString;
+			}
+			displayCurrentTime();
+			setInterval(displayCurrentTime, 1000);
+		</script>
+		<img src="assets/puppy1.jpg" alt="puppy" class="left-image">
+		<img src="assets/rainforest.jpg" alt="rainforest" class="left-image">
+		<img src="assets/hello kitty.gif" alt="hello kitty" class="left-image">
+		<img src="assets/bacon.jpg" alt="bacon" class="left-image">
+	</div> 
+	<main>
+		<button type="button" onclick="window.location.href='../index.html';">Back to Homepage</button>
+		<section>
+			<h1 style="text-align: center; color: white; font-size: 200%;">The Empty Houses</h1>
+
+			<div class="author">
+				<h2 style="color: black;">About the writer</h2>
+				<p style="color: black;">I live in North Maryland. I have 2 dogs. One is named Maya and the other is named CoCo. I like gardening and taking walks in the park with my dogs.
+				   My favorite food is burgers and fries. I also love watching TV and kid show animations. My favorite show is Animal House.
+				</p>
+			</div>
+		</section>
+
+		<section style="color: black;">
+			<div class="story">
+				<p >It was summer time and the weather was hot. I went to my friend's house to see their new dog. It was a little baby chihuahua. It was barking and running around a lot.
+					I got to pet it and walk it and feed it treats. Its name was Hannah. Then after seeing the dog me and my friend walked to Watkins park and I saw a family walking next to us.
+					They were an old man and a young woman. They walked to there house quickly and closed the door. I thought it was scary because the mans face was dirty and his teeth were not clean.
+				</p>
+				<p>I went home and went to sleep. The next day I went back to my friends house and when we walked to the park I saw the family again. The old man didnt look scary any more.
+					His teeth was clean and his face was clean. I saw them walk back to the house again but I looked at the house for a long time and did not see anything.
+					I told my friend but she did not believe me. Next week I went back to see the house and did not see anyone inside. I looked for a long time.
+					i told my friend again and she said she will look with me. At night time we said we would look at the house together.
+				</p>
+				<p>At night time we knocked on the door but no one answered. I tried to open the door and it was unlocked. We both went inside and all the lights were on.
+					We walked around quietly but we did not hear anything. We went into all the rooms and did not see anyone. There was no one in the house.
+					We knocked on the house next to it and it is also unlocked. We walked and there was no one again. All the houses on the street are empty.
+					No one lives in them.
+				</p>
+				<p>I do not know where the people go. The people in the house only leave the house when no one is looking. All the houses are empty.</p>
+			</div>
+		</section>
+
+		<section id="SPECIAL"> <!-- This text will be hidden until the review button is clicked -->
+			<div class="special">
+				<p> Update: I watched the news and a lot of police went over. I can not believe that the police read this and actually believed this story.
+					If you are reading this, please know this is all a jokes. I would not break into peoples houses. There are no empty houses.
+					I hope you like my stories.
+				</p>
+			</div>
+		</section>
+
+	</main>
+	
+	<div> 
+		<img src="assets/puppy2.jpg" alt="puppy" class="right-image">
+		<img src="assets/zoo.jpg" alt="zoo" class="right-image">
+		<img src="assets/pokemon.gif" alt="pokemon" class="right-image">
+		<img src="assets/burger.gif" alt="burger" class="right-image">
+	</div>
+
+</body>
+</html>

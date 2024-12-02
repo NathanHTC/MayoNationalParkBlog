@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     waifuIcon4.addEventListener('click', function(){
         audioElement.pause();
-        audioElement.src = 'assets/audio/dearest.ogg';
+        audioElement.src = 'assets/outCast.ogg';
         audioElement.load();
         audioElement.play();
     });
